@@ -26,17 +26,12 @@
 
       div#response {
         /* display: none; Hide the response initially */
-            position: fixed;
-            top: 33%;
-            width: 50%;
-            padding: 50px;
-            color: lightslategray;
-      }
-      div#response2{
-        display: none; 
-            position: fixed;
-            top: 33%;
-            width: 50%;
+            /* position: fixed; */
+            /* top: 33%; */
+            align-items: center;
+            display: flex;
+            flex-direction:column;
+            width: 100%;
             padding: 50px;
             color: lightslategray;
       }
@@ -60,7 +55,7 @@
   <body style="background-color: #252526;">
     <div id="content">
       <div id="header">
-        <h1 style="padding: 50px; padding-top: 0%; color: lightslategray">Our group made an AI chatbot to help people identify phishing. We hope that this will help the phishing epidemic that currently scams people in the world. To use this put in the text of your email that was sent to you and the AI will identify if it suspects phising.</h1>
+        <h1 style="padding: 50px; padding-top: 0%; color: lightslategray">Our group made an AI chatbot to help people identify phishing. We hope that this will help the phishing epidemic that currently scams people in the world. To use this put in the text of your email that was sent to you and the AI will identify if it suspects phishing.</h1>
       </div>
 
       <div id="response">
@@ -81,8 +76,9 @@
     <script>
       document.querySelector('#query-form').addEventListener('submit', (e) => {
         e.preventDefault();
-        const contents = document.getElementById('input-query').value;
         const outputElement = document.getElementById('response');
+        outputElement.textContent = "Loading response...";
+        const contents = document.getElementById('input-query').value;
 
         var apiUrl = "http://127.0.0.1:5000/get-user/" + contents;
         fetch(apiUrl)
